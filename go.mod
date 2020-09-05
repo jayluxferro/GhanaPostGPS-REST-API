@@ -1,4 +1,4 @@
-module github.com/jayluxferro/ghgps
+module github.com/jayluxferro/ghpgps
 
 go 1.14
 
