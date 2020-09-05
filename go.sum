@@ -16,6 +16,8 @@ github.com/jayluxferro/ghanapostgps v1.0.4 h1:+zAzRMhP8lD6q6EuYFJkFzCCoXHw9IpJCG
 github.com/jayluxferro/ghanapostgps v1.0.4/go.mod h1:jJAL0wvw2SxsO74JGnDGHIHF3w6a6dwtCUs2LKm5g3U=
 github.com/jayluxferro/ghanapostgps v1.0.5 h1:kSBgAqOrbYzhyhKbik6IAZDu+ABC9dH+gHmAgUpBqLY=
 github.com/jayluxferro/ghanapostgps v1.0.5/go.mod h1:jJAL0wvw2SxsO74JGnDGHIHF3w6a6dwtCUs2LKm5g3U=
+github.com/jayluxferro/ghanapostgps v1.0.6 h1:UGAhqmPXzHV74y2ZFiK03sbT/JOmeVSBl9OJ09VLjXw=
+github.com/jayluxferro/ghanapostgps v1.0.6/go.mod h1:jJAL0wvw2SxsO74JGnDGHIHF3w6a6dwtCUs2LKm5g3U=
 github.com/manucorporat/sse v0.0.0-20160126180136-ee05b128a739 h1:ykXz+pRRTibcSjG1yRhpdSHInF8yZY/mfn+Rz2Nd1rE=
 github.com/manucorporat/sse v0.0.0-20160126180136-ee05b128a739/go.mod h1:zUx1mhth20V3VKgL5jbd1BSQcW4Fy6Qs4PZvQwRFwzM=
 github.com/mattn/go-colorable v0.1.7 h1:bQGKb3vps/j0E9GfJQ03JyhRuxsvdAanXlT9BTw3mdw=
