@@ -1,0 +1,10 @@
+{
+  "name": "GhanaPostGPS",
+  "description": "Ghana's Digital Address System API",
+  "keywords": [
+    "ghana",
+    "ghanapostgps"
+  ],
+  "website": "https://jayluxferro.github.io/ghpgps/",
+  "repository": "https://github.com/jayluxferro/ghpgps/"
+}
