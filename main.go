@@ -104,6 +104,7 @@ func main() {
 		log.Fatal("$PORT must be set")
 	}
 
+  gin.SetMode(gin.ReleaseMode)
 	router := gin.New()
 	router.Use(gin.Logger())
 
