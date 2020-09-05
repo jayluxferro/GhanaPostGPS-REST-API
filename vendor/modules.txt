@@ -7,6 +7,9 @@ github.com/gin-gonic/gin/render
 ## explicit
 github.com/heroku/x/hmetrics
 github.com/heroku/x/hmetrics/onload
+# github.com/jayluxferro/ghanapostgps v1.0.5
+## explicit
+github.com/jayluxferro/ghanapostgps
 # github.com/manucorporat/sse v0.0.0-20160126180136-ee05b128a739
 ## explicit
 github.com/manucorporat/sse
