@@ -20,7 +20,7 @@ func main() {
 	router.Use(gin.Logger())
 
 	router.GET("/", func(c *gin.Context) {
-    c.Redirect(http.StatusOK, "https://jayluxferro.github.io/ghpgps")
+    c.Redirect(http.StatusFound, "https://jayluxferro.github.io/ghpgps")
 	})
 
 	router.Run(":" + port)

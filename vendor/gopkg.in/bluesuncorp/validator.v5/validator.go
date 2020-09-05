@@ -20,61 +20,30 @@ import (
 )
 
 const (
-	utf8HexComma    = "0x2C"
-	tagSeparator    = ","
-	orSeparator     = "|"
-	noValidationTag = "-"
-	tagKeySeparator = "="
-	structOnlyTag   = "structonly"
-	omitempty       = "omitempty"
-	required        = "required"
-	fieldErrMsg     = "Field validation for \"%s\" failed on the \"%s\" tag"
-	sliceErrMsg     = "Field validation for \"%s\" failed at index \"%d\" with error(s): %s"
-	mapErrMsg       = "Field validation for \"%s\" failed on key \"%v\" with error(s): %s"
-	structErrMsg    = "Struct:%s\n"
-	diveTag         = "dive"
-	// diveSplit           = "," + diveTag
+	utf8HexComma        = "0x2C"
+	tagSeparator        = ","
+	orSeparator         = "|"
+	noValidationTag     = "-"
+	tagKeySeparator     = "="
+	structOnlyTag       = "structonly"
+	omitempty           = "omitempty"
+	required            = "required"
+	fieldErrMsg         = "Field validation for \"%s\" failed on the \"%s\" tag"
+	sliceErrMsg         = "Field validation for \"%s\" failed at index \"%d\" with error(s): %s"
+	mapErrMsg           = "Field validation for \"%s\" failed on key \"%v\" with error(s): %s"
+	structErrMsg        = "Struct:%s\n"
+	diveTag             = "dive"
 	arrayIndexFieldName = "%s[%d]"
 	mapIndexFieldName   = "%s[%v]"
 )
 
-var structPool *pool
+var structPool *sync.Pool
 
-// Pool holds a channelStructErrors.
-type pool struct {
-	pool chan *StructErrors
-}
-
-// NewPool creates a new pool of Clients.
-func newPool(max int) *pool {
-	return &pool{
-		pool: make(chan *StructErrors, max),
-	}
-}
-
-// Borrow a StructErrors from the pool.
-func (p *pool) Borrow() *StructErrors {
-	var c *StructErrors
-
-	select {
-	case c = <-p.pool:
-	default:
-		c = &StructErrors{
-			Errors:       map[string]*FieldError{},
-			StructErrors: map[string]*StructErrors{},
-		}
-	}
-
-	return c
-}
-
-// Return returns a StructErrors to the pool.
-func (p *pool) Return(c *StructErrors) {
-
-	select {
-	case p.pool <- c:
-	default:
-		// let it go, let it go...
+// returns new *StructErrors to the pool
+func newStructErrors() interface{} {
+	return &StructErrors{
+		Errors:       map[string]*FieldError{},
+		StructErrors: map[string]*StructErrors{},
 	}
 }
 
@@ -193,6 +162,82 @@ func (e *FieldError) Error() string {
 	return fmt.Sprintf(fieldErrMsg, e.Field, e.Tag)
 }
 
+// Flatten flattens the FieldError hierarchical structure into a flat namespace style field name
+// for those that want/need it.
+// This is now needed because of the new dive functionality
+func (e *FieldError) Flatten() map[string]*FieldError {
+
+	errs := map[string]*FieldError{}
+
+	if e.IsPlaceholderErr {
+
+		if e.IsSliceOrArray {
+			for key, err := range e.SliceOrArrayErrs {
+
+				fe, ok := err.(*FieldError)
+
+				if ok {
+
+					if flat := fe.Flatten(); flat != nil && len(flat) > 0 {
+						for k, v := range flat {
+							if fe.IsPlaceholderErr {
+								errs[fmt.Sprintf("[%#v]%s", key, k)] = v
+							} else {
+								errs[fmt.Sprintf("[%#v]", key)] = v
+							}
+
+						}
+					}
+				} else {
+
+					se := err.(*StructErrors)
+
+					if flat := se.Flatten(); flat != nil && len(flat) > 0 {
+						for k, v := range flat {
+							errs[fmt.Sprintf("[%#v].%s.%s", key, se.Struct, k)] = v
+						}
+					}
+				}
+			}
+		}
+
+		if e.IsMap {
+			for key, err := range e.MapErrs {
+
+				fe, ok := err.(*FieldError)
+
+				if ok {
+
+					if flat := fe.Flatten(); flat != nil && len(flat) > 0 {
+						for k, v := range flat {
+							if fe.IsPlaceholderErr {
+								errs[fmt.Sprintf("[%#v]%s", key, k)] = v
+							} else {
+								errs[fmt.Sprintf("[%#v]", key)] = v
+							}
+						}
+					}
+				} else {
+
+					se := err.(*StructErrors)
+
+					if flat := se.Flatten(); flat != nil && len(flat) > 0 {
+						for k, v := range flat {
+							errs[fmt.Sprintf("[%#v].%s.%s", key, se.Struct, k)] = v
+						}
+					}
+				}
+			}
+		}
+
+		return errs
+	}
+
+	errs[e.Field] = e
+
+	return errs
+}
+
 // StructErrors is hierarchical list of field and struct validation errors
 // for a non hierarchical representation please see the Flatten method for StructErrors
 type StructErrors struct {
@@ -234,7 +279,17 @@ func (e *StructErrors) Flatten() map[string]*FieldError {
 
 	for _, f := range e.Errors {
 
-		errs[f.Field] = f
+		if flat := f.Flatten(); flat != nil && len(flat) > 0 {
+
+			for k, fe := range flat {
+
+				if f.IsPlaceholderErr {
+					errs[f.Field+k] = fe
+				} else {
+					errs[k] = fe
+				}
+			}
+		}
 	}
 
 	for key, val := range e.StructErrors {
@@ -272,7 +327,7 @@ type Validate struct {
 // New creates a new Validate instance for use.
 func New(tagName string, funcs map[string]Func) *Validate {
 
-	structPool = newPool(10)
+	structPool = &sync.Pool{New: newStructErrors}
 
 	return &Validate{
 		tagName:         tagName,
@@ -292,9 +347,8 @@ func (v *Validate) SetTag(tagName string) {
 // nearly all cases. only increase if you have a deeply nested struct structure.
 // NOTE: this method is not thread-safe
 // NOTE: this is only here to keep compatibility with v5, in v6 the method will be removed
-// and the max pool size will be passed into the New function
 func (v *Validate) SetMaxStructPoolSize(max int) {
-	structPool = newPool(max)
+	structPool = &sync.Pool{New: newStructErrors}
 }
 
 // AddFunction adds a validation Func to a Validate's map of validators denoted by the key
@@ -355,7 +409,7 @@ func (v *Validate) structRecursive(top interface{}, current interface{}, s inter
 		cs = &cachedStruct{name: structName, children: numFields}
 	}
 
-	validationErrors := structPool.Borrow()
+	validationErrors := structPool.Get().(*StructErrors)
 	validationErrors.Struct = structName
 
 	for i := 0; i < numFields; i++ {
@@ -532,7 +586,7 @@ func (v *Validate) structRecursive(top interface{}, current interface{}, s inter
 	structCache.Set(structType, cs)
 
 	if len(validationErrors.Errors) == 0 && len(validationErrors.StructErrors) == 0 {
-		structPool.Return(validationErrors)
+		structPool.Put(validationErrors)
 		return nil
 	}
 
@@ -556,7 +610,7 @@ func (v *Validate) fieldWithNameAndValue(val interface{}, current interface{}, f
 	var valueField reflect.Value
 
 	// This is a double check if coming from validate.Struct but need to be here in case function is called directly
-	if tag == noValidationTag {
+	if tag == noValidationTag || tag == "" {
 		return nil
 	}
 
