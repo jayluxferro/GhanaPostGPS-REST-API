@@ -1,19 +1,12 @@
 ## GhanaPostGPS REST API
-<hr/><hr>
 ### Whitepaper
-<hr/>
 <p><a target="_blank" href="http://dx.doi.org/10.13140/RG.2.2.24355.27684/1">Read Now</a></p>
-<hr/><br>
 
-<hr/><hr>
 ### API Details
-<hr/>
 <b>End Point URL:</b> https://ghpgps.herokuapp.com<br>
 <b>Method:</b> POST<br>
 <b>Parameters:</b> address (GhanaPostGPS Address)<br>
 <b>Content-Type:</b> application/x-www-form-urlencoded<br>
-<hr/><br><br>
-<hr/>
 #### Output/Response:
 <hr/>
 1. Address found
