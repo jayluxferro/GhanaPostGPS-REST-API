@@ -8,9 +8,9 @@
 <b>Parameters:</b> address (GhanaPostGPS Address)<br>
 <b>Content-Type:</b> application/x-www-form-urlencoded<br>
 #### Output/Response:
-<hr/>
 1. Address found
-```
+
+```json
 {
     "data": {
         "Table": [
@@ -39,7 +39,8 @@
 ```
 
 2. Address not found
-```
+
+```json
 {
     "data": {
         "Table": null
@@ -47,9 +48,7 @@
     "found": false
 }
 ```
-<hr/><hr><br><br>
 
-<hr/>
 ### Sample Codes
 <a href="#csharp">C-Sharp</a> | <a href="#curl">cURL</a> | <a href="#go">Golang</a> | <a href="#js">Javascript</a> | <a href="#node">NodeJS</a> | <a href="#php">PHP</a> | <a href="#python">Python</a> | <a href="#swift">Swift</a> | <a href="#java">Java</a> | <a href="#ruby">Ruby</a> | <a href="#powershell">PowerShell</a><br><br>
 <hr/>
@@ -60,7 +59,7 @@
 <hr/>
 Code:
 
-```
+```javascript
 var client = new RestClient("https://ghpgps.herokuapp.com");
 client.Timeout = -1;
 var request = new RestRequest(Method.POST);
@@ -70,13 +69,13 @@ request.OnBeforeDeserialization = resp => { resp.ContentType = "application/json
 IRestResponse response = client.Execute(request);
 Console.WriteLine(response.Content);
 ```
-<hr/><br>
 
 <hr id="curl">
 ### cURL
 <hr/>
 Code:
-```
+
+```bash
 curl --location --request POST 'https://ghpgps.herokuapp.com' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
 --data-urlencode 'address=AK-484-9321'
