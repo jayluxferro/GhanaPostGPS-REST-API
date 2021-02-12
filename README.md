@@ -71,7 +71,7 @@ Console.WriteLine(response.Content);
 ```
 
 <hr id="curl">
-### cURL
+<h4>cURL</h4>
 <hr/>
 Code:
 
@@ -80,13 +80,13 @@ curl --location --request POST 'https://ghpgps.herokuapp.com' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
 --data-urlencode 'address=AK-484-9321'
 ```
-<hr/><br>
 
 <hr id="go">
-### Go
+<h4>Go</h4>
 <hr/>
 Code:
-```
+
+```go
 package main
 
 import (
@@ -119,13 +119,13 @@ func main() {
   fmt.Println(string(body))
 }
 ```
-<hr/><br>
 
 <hr id="js">
-### Javscript
+<h4>Javscript</h4>
 <hr/>
 Code:
-```
+
+```javascript
 var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
@@ -144,14 +144,15 @@ fetch("https://ghpgps.herokuapp.com", requestOptions)
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
 ```
-<hr/><br>
+
 
 
 <hr id="node">
-### NodeJS
+<h4>NodeJS</h4>
 <hr/>
 Code:
-```
+
+```javascript
 var request = require('request');
 var options = {
   'method': 'POST',
@@ -168,13 +169,14 @@ request(options, function (error, response) {
   console.log(response.body);
 });
 ```
-<hr/><br>
+
 
 <hr id="php">
-### PHP
+<h4>PHP</h4>
 <hr/>
 Code:
-```
+
+```php
 <?php
 
 $curl = curl_init();
@@ -199,13 +201,14 @@ $response = curl_exec($curl);
 curl_close($curl);
 echo $response;
 ```
-<hr/><br>
+
 
 <hr id="python">
-### Python
+<h4>Python</h4>
 <hr/>
 Code:
-```
+
+```python
 import requests
 
 url = "https://ghpgps.herokuapp.com"
@@ -219,13 +222,14 @@ response = requests.request("POST", url, headers=headers, data = payload)
 
 print(response.json())
 ```
-<hr/><br>
+
 
 <hr id="swift">
-### Swift
+<h4>Swift</h4>
 <hr/>
 Code:
-```
+
+```swift
 import Foundation
 
 var semaphore = DispatchSemaphore (value: 0)
@@ -251,13 +255,14 @@ let task = URLSession.shared.dataTask(with: request) { data, response, error in
 task.resume()
 semaphore.wait()
 ```
-<hr/><br>
+
 
 <hr id="java">
-### Java
+<h4>Java</h4>
 <hr/>
 Code:
-```
+
+```java
 OkHttpClient client = new OkHttpClient().newBuilder()
   .build();
 MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
@@ -269,13 +274,13 @@ Request request = new Request.Builder()
   .build();
 Response response = client.newCall(request).execute();
 ```
-<hr/><br>
 
 <hr id="ruby">
-### Ruby
+<h4>Ruby</h4>
 <hr/>
 Code:
-```
+
+```ruby
 require "uri"
 require "net/http"
 
@@ -291,13 +296,14 @@ request.body = "address=AK-484-9321"
 response = https.request(request)
 puts response.read_body
 ```
-<hr/><br>
+
 
 <hr id="powershell">
-### PowerShell
+<h4>PowerShell</h4>
 <hr/>
 Code:
-```
+
+```powershell
 $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
 $headers.Add("Content-Type", "application/x-www-form-urlencoded")
 
@@ -306,4 +312,4 @@ $body = "address=AK-484-9321"
 $response = Invoke-RestMethod 'https://ghpgps.herokuapp.com' -Method 'POST' -Headers $headers -Body $body
 $response | ConvertTo-Json
 ```
-<hr/><br>
+
