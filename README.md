@@ -1,2 +1,3 @@
+### GhanaPostGPS API
 
-## GhanaPostGPS Public API
+Details of API: https://jayluxferro.github.io/ghpgps
