@@ -109,7 +109,7 @@ func main() {
 	router.Use(gin.Logger())
 
 	router.GET("/", func(c *gin.Context) {
-    c.Redirect(http.StatusFound, "https://jayluxferro.github.io/ghpgps")
+    c.Redirect(http.StatusFound, "https://github.com/jayluxferro/GhanaPostGPS-REST-API")
 	})
 
   // main 
