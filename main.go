@@ -83,6 +83,12 @@ func convertToJSON(data string) string {
   return string(out)
 }
 
+func CORSMiddleware() gin.HandlerFunc {
+    return func(c *gin.Context) {
+        c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
+    }
+}
+
 func main() {
   // inits
   prefix := "GPGPS_"
@@ -106,6 +112,7 @@ func main() {
 
   gin.SetMode(gin.ReleaseMode)
 	router := gin.New()
+  router.Use(CORSMiddleware())
 	router.Use(gin.Logger())
 
 	router.GET("/", func(c *gin.Context) {
