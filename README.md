@@ -3,7 +3,7 @@
 <p><a target="_blank" href="http://dx.doi.org/10.13140/RG.2.2.24355.27684/1">Read Now</a></p>
 
 ### API Details
-<b>End Point URL:</b> https://ghpgps.herokuapp.com<br>
+<b>End Point URL:</b> https://ghanapostgps.sperixlabs.org<br>
 <b>Method:</b> POST<br>
 <b>Parameters:</b> address (GhanaPostGPS Address)<br>
 <b>Content-Type:</b> application/x-www-form-urlencoded<br>
@@ -60,7 +60,7 @@
 Code:
 
 ```javascript
-var client = new RestClient("https://ghpgps.herokuapp.com");
+var client = new RestClient("https://ghanapostgps.sperixlabs.org");
 client.Timeout = -1;
 var request = new RestRequest(Method.POST);
 request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -76,7 +76,7 @@ Console.WriteLine(response.Content);
 Code:
 
 ```bash
-curl --location --request POST 'https://ghpgps.herokuapp.com' \
+curl --location --request POST 'https://ghanapostgps.sperixlabs.org' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
 --data-urlencode 'address=AK-484-9321'
 ```
@@ -98,7 +98,7 @@ import (
 
 func main() {
 
-  url := "https://ghpgps.herokuapp.com"
+  url := "https://ghanapostgps.sperixlabs.org"
   method := "POST"
 
   payload := strings.NewReader("address=AK-484-9321")
@@ -139,7 +139,7 @@ var requestOptions = {
   redirect: 'follow'
 };
 
-fetch("https://ghpgps.herokuapp.com", requestOptions)
+fetch("https://ghanapostgps.sperixlabs.org", requestOptions)
   .then(response => response.json())
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
@@ -156,7 +156,7 @@ Code:
 var request = require('request');
 var options = {
   'method': 'POST',
-  'url': 'https://ghpgps.herokuapp.com',
+  'url': 'https://ghanapostgps.sperixlabs.org',
   'headers': {
     'Content-Type': 'application/x-www-form-urlencoded'
   },
@@ -182,7 +182,7 @@ Code:
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://ghpgps.herokuapp.com",
+  CURLOPT_URL => "https://ghanapostgps.sperixlabs.org",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
   CURLOPT_MAXREDIRS => 10,
@@ -211,7 +211,7 @@ Code:
 ```python
 import requests
 
-url = "https://ghpgps.herokuapp.com"
+url = "https://ghanapostgps.sperixlabs.org"
 
 payload = 'address=AK-484-9321'
 headers = {
@@ -237,7 +237,7 @@ var semaphore = DispatchSemaphore (value: 0)
 let parameters = "address=AK-484-9321"
 let postData =  parameters.data(using: .utf8)
 
-var request = URLRequest(url: URL(string: "https://ghpgps.herokuapp.com")!,timeoutInterval: Double.infinity)
+var request = URLRequest(url: URL(string: "https://ghanapostgps.sperixlabs.org")!,timeoutInterval: Double.infinity)
 request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
 
 request.httpMethod = "POST"
@@ -268,7 +268,7 @@ OkHttpClient client = new OkHttpClient().newBuilder()
 MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
 RequestBody body = RequestBody.create(mediaType, "address=AK-484-9321");
 Request request = new Request.Builder()
-  .url("https://ghpgps.herokuapp.com")
+  .url("https://ghanapostgps.sperixlabs.org")
   .method("POST", body)
   .addHeader("Content-Type", "application/x-www-form-urlencoded")
   .build();
@@ -284,7 +284,7 @@ Code:
 require "uri"
 require "net/http"
 
-url = URI("https://ghpgps.herokuapp.com")
+url = URI("https://ghanapostgps.sperixlabs.org")
 
 https = Net::HTTP.new(url.host, url.port);
 https.use_ssl = true
@@ -309,7 +309,7 @@ $headers.Add("Content-Type", "application/x-www-form-urlencoded")
 
 $body = "address=AK-484-9321"
 
-$response = Invoke-RestMethod 'https://ghpgps.herokuapp.com' -Method 'POST' -Headers $headers -Body $body
+$response = Invoke-RestMethod 'https://ghanapostgps.sperixlabs.org' -Method 'POST' -Headers $headers -Body $body
 $response | ConvertTo-Json
 ```
 
