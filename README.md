@@ -4,7 +4,7 @@
 
 
 <details>
-<summary>Get Location Coordinates(Latitude/Longitude)from GhanaPostGPS Address.</summary>
+<summary>Get Location Coordinates (Latitude/Longitude) from GhanaPostGPS Address.</summary>
 <hr/>
 ### API Details<br>
 <b>End Point URL:</b> https://ghanapostgps.sperixlabs.org/get-location<br>
