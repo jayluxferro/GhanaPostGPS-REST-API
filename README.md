@@ -325,7 +325,7 @@ $response | ConvertTo-Json
 <summary>Get GhanaPostGPS Address from Location Coordinates (Latitude/Longitude).</summary>
 <hr/>
 ### API Details<br>
-<b>End Point URL:</b> https://ghanapostgps.sperixlabs.org/get-location/get-address<br>
+<b>End Point URL:</b> https://ghanapostgps.sperixlabs.org/get-address<br>
 <b>Method:</b> POST<br>
 <b>API Parameters:</b> lat (latitude), long (longitude)<br>
 <b>Content-Type:</b> application/x-www-form-urlencoded<br><br>
