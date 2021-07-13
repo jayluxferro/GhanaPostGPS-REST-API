@@ -13,7 +13,7 @@
 <b>Content-Type:</b> application/x-www-form-urlencoded<br><br>
 #### Output/Response:<br>
 
-1. Address found
+1. Location found
 
 ```json
 {
@@ -43,7 +43,7 @@
 }
 ```
 
-2. Address not found
+2. Location not found
 
 ```json
 {
