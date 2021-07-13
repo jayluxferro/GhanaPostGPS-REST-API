@@ -415,7 +415,7 @@ import (
 
 func main() {
 
-  url := "http://ghanapostgps.sperixlabs.org/get-address"
+  url := "https://ghanapostgps.sperixlabs.org/get-address"
   method := "POST"
 
   payload := &bytes.Buffer{}
@@ -475,7 +475,7 @@ var requestOptions = {
   body: formdata
 };
 
-fetch("http://ghanapostgps.sperixlabs.org/get-address", requestOptions)
+fetch("https://ghanapostgps.sperixlabs.org/get-address", requestOptions)
   .then(response => response.json())
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
@@ -492,7 +492,7 @@ Code:
 var request = require('request');
 var options = {
   'method': 'POST',
-  'url': 'http://ghanapostgps.sperixlabs.org/get-address',
+  'url': 'https://ghanapostgps.sperixlabs.org/get-address',
   'headers': {
     'Content-Type': 'application/x-www-form-urlencoded'
   },
@@ -519,7 +519,7 @@ Code:
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => 'http://ghanapostgps.sperixlabs.org/get-address',
+  CURLOPT_URL => 'https://ghanapostgps.sperixlabs.org/get-address',
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => '',
   CURLOPT_MAXREDIRS => 10,
@@ -548,7 +548,7 @@ Code:
 ```python
 import requests
 
-url = "http://ghanapostgps.sperixlabs.org/get-address"
+url = "https://ghanapostgps.sperixlabs.org/get-address"
 
 payload={'lat': '6.6500', 'long': '-1.647'}
 files=[]
@@ -614,7 +614,7 @@ for param in parameters {
 body += "--\(boundary)--\r\n";
 let postData = body.data(using: .utf8)
 
-var request = URLRequest(url: URL(string: "http://ghanapostgps.sperixlabs.org/get-address")!,timeoutInterval: Double.infinity)
+var request = URLRequest(url: URL(string: "https://ghanapostgps.sperixlabs.org/get-address")!,timeoutInterval: Double.infinity)
 request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
 request.addValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
 
@@ -644,7 +644,7 @@ Code:
 require "uri"
 require "net/http"
 
-url = URI("http://ghanapostgps.sperixlabs.org/get-address")
+url = URI("https://ghanapostgps.sperixlabs.org/get-address")
 
 http = Net::HTTP.new(url.host, url.port);
 request = Net::HTTP::Post.new(url)
@@ -680,7 +680,7 @@ $multipartContent.Add($stringContent)
 
 $body = $multipartContent
 
-$response = Invoke-RestMethod 'http://ghanapostgps.sperixlabs.org/get-address' -Method 'POST' -Headers $headers -Body $body
+$response = Invoke-RestMethod 'https://ghanapostgps.sperixlabs.org/get-address' -Method 'POST' -Headers $headers -Body $body
 $response | ConvertTo-Json
 ```
 </details>
