@@ -10,6 +10,7 @@ import (
 	"github.com/gin-gonic/gin"
 	_ "github.com/heroku/x/hmetrics/onload"
 	gp "github.com/jayluxferro/ghanapostgps"
+	"github.com/joho/godotenv"
 )
 
 var params gp.Params
@@ -131,6 +132,12 @@ func CORSMiddleware() gin.HandlerFunc {
 }
 
 func main() {
+	//load .env file
+	err := godotenv.Load(".env")
+
+	if err != nil {
+			log.Fatal("Error loading .env file")
+	}
 	// inits
 	prefix := "GPGPS_"
 	params = gp.Params{}
@@ -156,8 +163,9 @@ func main() {
 	router.Use(CORSMiddleware())
 	router.Use(gin.Logger())
 
+	// routes
 	router.GET("/", func(c *gin.Context) {
-		c.Redirect(http.StatusFound, "https://sperixlabs.org")
+		c.Redirect(301, "https://sperixlabs.org")
 	})
 
 	// routes

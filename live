@@ -1,0 +1,1 @@
+GIN_MODE=release PORT=5001 bin/ghpgp

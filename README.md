@@ -4,6 +4,28 @@
 
 
 <details>
+<summary>Deploy your own instance</summary>
+<hr/>
+1. Download and install Golang (<a href="https://golang.org/dl" target="_blank">here</a>). Make sure it's added to your environment path.
+2. Clone repository
+```
+git clone https://github.com/jayluxferro/GhanaPostGPS-REST-API.git ghanapostgps
+```
+3. Install dependencies.
+```terminal
+cd ghanapostgps
+go mod vendor
+```
+4. Run in development mode
+```
+./dev
+```
+5. Run in live mode
+```
+./live
+```
+**NB:** Default port is `5001`. Modify the 'run' scripts to change the default port. The API documentation is the same; replace the hostname with your instance's.
+
 <summary>Get Location Coordinates (Latitude/Longitude) from GhanaPostGPS Address.</summary>
 <hr/>
 ### API Details<br>
