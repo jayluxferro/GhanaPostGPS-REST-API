@@ -1,2 +1,2 @@
 ./build
-GIN_MODE=release PORT=5001 bin/ghpgp
+GIN_MODE=release PORT=5001 bin/ghpgps
