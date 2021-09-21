@@ -6,6 +6,7 @@
 <details>
 <summary>Deploy your own instance</summary>
 <hr/>
+
 ### Local Server / VPS
 1. Download and install Golang (<a href="https://golang.org/dl" target="_blank">here</a>). Make sure it's added to your environment path.
 
