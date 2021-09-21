@@ -1,6 +1,6 @@
 ## GhanaPostGPS REST API
 ### Whitepaper
-<p><a target="_blank" href="http://dx.doi.org/10.13140/RG.2.2.24355.27684/1">Read Now</a></p>
+<p><a target="_blank" href="http://dx.doi.org/10.13140/RG.2.2.24355.27684/2">Read Now</a></p>
 
 
 <details>
