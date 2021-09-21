@@ -30,8 +30,9 @@ go mod vendor
 ```
 
 **NB:** Default port is `5001`. Modify the 'run' scripts to change the default port. The API documentation is the same; replace the hostname with your instance's.
-<br/><br/><br/><br/>
 </details>
+<br/>
+
 
 <details>
 <summary>Get Location Coordinates (Latitude/Longitude) from GhanaPostGPS Address.</summary>
