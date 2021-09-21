@@ -6,9 +6,9 @@
 <details>
 <summary>Deploy your own instance</summary>
 <hr/>
-1. Download and install Golang (<a href="https://golang.org/dl" target="_blank">here</a>). Make sure it's added to your environment path.
+1. Download and install Golang (<a href="https://golang.org/dl">here</a>). Make sure it's added to your environment path.
 
-2. Clone repository
+2. Clone the repository....
 ```
 git clone https://github.com/jayluxferro/GhanaPostGPS-REST-API.git ghanapostgps
 ```
