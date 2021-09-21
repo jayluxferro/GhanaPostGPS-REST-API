@@ -6,7 +6,7 @@
 <details>
 <summary>Deploy your own instance</summary>
 <hr/>
-
+### Local Server / VPS
 1. Download and install Golang (<a href="https://golang.org/dl" target="_blank">here</a>). Make sure it's added to your environment path.
 
 2. Clone the repository....
@@ -31,6 +31,19 @@ go mod vendor
 ```
 
 **NB:** Default port is `5001`. Modify the 'run' scripts to change the default port. The API documentation is the same; replace the hostname with your instance's.
+
+### Heroku
+1. Clone the project.
+
+2. Create a new heroku project and add its git URL. Example is shown below:
+```
+    git remote add heroku https://myproject.heroku.git
+```
+
+3. Push to the heroku instance.
+```
+    git push heroku master
+```
 </details>
 <br/>
 
