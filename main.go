@@ -69,6 +69,20 @@ func responseData(c *gin.Context, found bool, data interface{}) {
 	})
 }
 
+func getAPIKeysHandler(c *gin.Context){
+	// copy current params
+	defaults := params
+
+	// set new values
+  defaults.ApiKey = gp.RandomString(16)
+  defaults.UUID = gp.UUID()
+  defaults.ApiURL = gp.BaseAPIURL + "?publickey=1"
+
+	// return data
+	c.JSON(http.StatusOK, gin.H{"data": gp.GetAPIKeys(&defaults)})
+}
+
+
 func getAddressHandler(c *gin.Context) {
 	var dataResponse AddressResponse
 	lat := string(c.PostForm("lat"))
@@ -162,16 +176,25 @@ func main() {
 	router := gin.New()
 	router.Use(CORSMiddleware())
 	router.Use(gin.Logger())
+	router.LoadHTMLGlob("templates/*.tmpl.html")
+	router.Static("/static", "static")
+	
+	var production = false
+  if(os.Getenv("MODE") == "prod"){
+    production = true
+  }
 
 	// routes
 	router.GET("/", func(c *gin.Context) {
-		c.Redirect(301, "https://sperixlabs.org")
+		c.HTML(http.StatusOK, "index.tmpl.html", gin.H{
+      "production": production,
+    })
 	})
 
-	// routes
 	router.POST("/", getLocationHandler)
 	router.POST("/get-location", getLocationHandler)
 	router.POST("/get-address", getAddressHandler)
+	router.POST("/api-keys", getAPIKeysHandler)
 
 	router.Run(":" + port)
 }

@@ -1,0 +1,75 @@
+@font-face{
+	font-family: flower;
+	src: url('../fonts/Fflowers-v5.03-9797E33C501E135A76041110B3FD885E.ttf');
+}
+
+@font-face{
+	font-family: box;
+	src: url('../fonts/Box-v5.03-780CFE6B2E265230ED1D5C3668F2204C.ttf');
+}
+
+@font-face{
+	font-family: handwind;
+	src: url('../fonts/Handwind-v5.02-5BD617D12E00764582FF54861A801DCC.ttf');
+}
+
+.bgblue {
+	background-color: #2c3e50;
+	color: #fff;
+}
+
+.txtblue {
+	color: #2c3e50;
+}
+
+.center {
+	text-align: center;
+}
+
+.left {
+	text-align: left;
+}
+
+.right {
+	text-align: right;
+}
+
+
+.flowerFont {
+	font-family: flower;
+}
+
+.handwindFont {
+	font-family: handwind
+}
+
+.boxFont {
+	font-family: box
+}
+
+.reportBox {
+	height: 120px;
+}
+
+.nb {
+	font-size: 20px;
+}
+
+.striped {
+	background-color: #eee
+}
+.borderRadius {
+  border-radius: 50px;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+}
+.dp {
+  width: 100px;
+  height: 100px;
+}
+.top-margin {
+  margin-top: 15px;
+}
+.margin {
+  margin: 15px;
+}
