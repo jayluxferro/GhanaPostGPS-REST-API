@@ -1,6 +1,6 @@
 module github.com/jayluxferro/ghpgps
 
-// +heroku goVersion go1.16
+// +heroku goVersion go1.17
 go 1.17
 
 require (
