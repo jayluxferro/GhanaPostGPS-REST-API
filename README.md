@@ -416,11 +416,11 @@ $response | ConvertTo-Json
 ```
 
 ### Sample Codes
-<a href="#csharp">C-Sharp</a> | <a href="#curl">cURL</a> | <a href="#go">Golang</a> | <a href="#js">Javascript</a> | <a href="#node">NodeJS</a> | <a href="#php">PHP</a> | <a href="#python">Python</a> | <a href="#swift">Swift</a> | <a href="#java">Java</a> | <a href="#ruby">Ruby</a> | <a href="#powershell">PowerShell</a><br><br>
+<a href="#csharp2">C-Sharp</a> | <a href="#curl2">cURL</a> | <a href="#go2">Golang</a> | <a href="#js2">Javascript</a> | <a href="#node2">NodeJS</a> | <a href="#php2">PHP</a> | <a href="#python2">Python</a> | <a href="#swift2">Swift</a> | <a href="#java2">Java</a> | <a href="#ruby2">Ruby</a> | <a href="#powershell2">PowerShell</a><br><br>
 <hr/>
 <b>Address:</b> AK-484-9321 or AK4849321<br><br>
 
-<hr id="csharp">
+<hr id="csharp2">
 <h4>C-Sharp</h4>
 <hr/>
 Code:
@@ -437,7 +437,7 @@ IRestResponse response = client.Execute(request);
 Console.WriteLine(response.Content);
 ```
 
-<hr id="curl">
+<hr id="curl2">
 <h4>cURL</h4>
 <hr/>
 Code:
@@ -446,7 +446,7 @@ Code:
 curl --location --request POST 'https://ghanapostgps.sperixlabs.org/get-address' --form 'lat="6.6500"' --form 'long="-1.647"'
 ```
 
-<hr id="go">
+<hr id="go2">
 <h4>Go</h4>
 <hr/>
 Code:
@@ -505,7 +505,7 @@ func main() {
 }
 ```
 
-<hr id="js">
+<hr id="js2">
 <h4>Javscript</h4>
 <hr/>
 Code:
@@ -532,7 +532,7 @@ fetch("https://ghanapostgps.sperixlabs.org/get-address", requestOptions)
 
 
 
-<hr id="node">
+<hr id="node2">
 <h4>NodeJS</h4>
 <hr/>
 Code:
@@ -557,7 +557,7 @@ request(options, function (error, response) {
 ```
 
 
-<hr id="php">
+<hr id="php2">
 <h4>PHP</h4>
 <hr/>
 Code:
@@ -589,7 +589,7 @@ echo $response;
 ```
 
 
-<hr id="python">
+<hr id="python2">
 <h4>Python</h4>
 <hr/>
 Code:
@@ -611,7 +611,7 @@ print(response.json())
 ```
 
 
-<hr id="swift">
+<hr id="swift2">
 <h4>Swift</h4>
 <hr/>
 Code:
@@ -684,7 +684,7 @@ task.resume()
 semaphore.wait()
 ```
 
-<hr id="ruby">
+<hr id="ruby2">
 <h4>Ruby</h4>
 <hr/>
 Code:
@@ -705,7 +705,7 @@ puts response.read_body
 ```
 
 
-<hr id="powershell">
+<hr id="powershell2">
 <h4>PowerShell</h4>
 <hr/>
 Code:
