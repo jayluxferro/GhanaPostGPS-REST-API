@@ -576,7 +576,7 @@ curl_setopt_array($curl, array(
   CURLOPT_FOLLOWLOCATION => true,
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => 'POST',
-  CURLOPT_POSTFIELDS => array('lat' => '6.6500','long' => '-1.647'),
+  CURLOPT_POSTFIELDS => http_build_query(array('lat' => '6.6500','long' => '-1.647')),
   CURLOPT_HTTPHEADER => array(
     'Content-Type: application/x-www-form-urlencoded'
   ),

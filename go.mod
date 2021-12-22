@@ -1,6 +1,6 @@
 module github.com/jayluxferro/ghpgps
 
-go 1.16
+go 1.17.5
 
 require (
 	github.com/gin-gonic/gin v0.0.0-20150626140855-4cc2de6207f4
