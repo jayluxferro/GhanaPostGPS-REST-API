@@ -24,6 +24,8 @@ github.com/jayluxferro/ghanapostgps v1.0.7 h1:pm1Dkoh2Qr/qtgaVbjHycM2fR9Vf3QxJIQ
 github.com/jayluxferro/ghanapostgps v1.0.7/go.mod h1:jJAL0wvw2SxsO74JGnDGHIHF3w6a6dwtCUs2LKm5g3U=
 github.com/jayluxferro/ghanapostgps v1.0.9 h1:KLff/AVuyD7o/FTnbmRHJHiyASJYM2IYU+9MYUCn9Og=
 github.com/jayluxferro/ghanapostgps v1.0.9/go.mod h1:yMxm8x2NwUSJK1exqemzkQz+SVxAr8LgTSmqnOc5f40=
+github.com/jayluxferro/ghanapostgps v1.1.0 h1:prYodRO7+vco+gGu9Gue4M4dHoIHNdcimj6MJP92T1Y=
+github.com/jayluxferro/ghanapostgps v1.1.0/go.mod h1:a8j3V6R7FmO6sT/m0V4U0TIssJyNrR2yHQidhHVWtgE=
 github.com/joho/godotenv v1.3.0 h1:Zjp+RcGpHhGlrMbJzXTrZZPrWj+1vfm90La1wgB6Bhc=
 github.com/joho/godotenv v1.3.0/go.mod h1:7hK45KPybAkOC6peb+G5yklZfMxEjkZhHbwpqxOKXbg=
 github.com/manucorporat/sse v0.0.0-20160126180136-ee05b128a739 h1:ykXz+pRRTibcSjG1yRhpdSHInF8yZY/mfn+Rz2Nd1rE=
