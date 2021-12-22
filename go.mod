@@ -6,7 +6,7 @@ go 1.17.5
 require (
 	github.com/gin-gonic/gin v0.0.0-20150626140855-4cc2de6207f4
 	github.com/heroku/x v0.0.0-20171004170240-705849e307dd
-	github.com/jayluxferro/ghanapostgps v1.0.9
+	github.com/jayluxferro/ghanapostgps v1.1.0
 	github.com/joho/godotenv v1.3.0
 	github.com/manucorporat/sse v0.0.0-20160126180136-ee05b128a739 // indirect
 	github.com/mattn/go-colorable v0.1.7 // indirect
