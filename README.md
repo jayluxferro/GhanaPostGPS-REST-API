@@ -10,7 +10,7 @@
 ### Local Server / VPS
 1. Download and install Golang (<a href="https://golang.org/dl" target="_blank">here</a>). Make sure it's added to your environment path.
 
-2. Clone the repository....
+2. Clone the repository.
 ```
 git clone https://github.com/jayluxferro/GhanaPostGPS-REST-API.git ghanapostgps
 ```
@@ -18,6 +18,7 @@ git clone https://github.com/jayluxferro/GhanaPostGPS-REST-API.git ghanapostgps
 3. Install dependencies.
 ```terminal
 cd ghanapostgps
+go mod download
 go mod vendor
 ```
 
