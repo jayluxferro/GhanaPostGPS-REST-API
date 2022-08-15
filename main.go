@@ -74,9 +74,7 @@ func getAPIKeysHandler(c *gin.Context){
 	defaults := params
 
 	// set new values
-  defaults.ApiKey = gp.RandomString(16)
-  defaults.UUID = gp.UUID()
-  defaults.ApiURL = gp.BaseAPIURL + "?publickey=1"
+  defaults.ApiURL = gp.BaseAPIURL
 
 	// return data
 	c.JSON(http.StatusOK, gin.H{"data": gp.GetAPIKeys(&defaults)})
@@ -155,16 +153,16 @@ func main() {
 	// inits
 	prefix := "GPGPS_"
 	params = gp.Params{}
+	params.ApiURL = os.Getenv(prefix + "apiURL")
+	params.Authorization = os.Getenv(prefix + "authorization")
+	params.AsaaseUser = os.Getenv(prefix + "asaaseUser")
+	params.LanguageCode = os.Getenv(prefix + "languageCode")
+	params.Language = os.Getenv(prefix + "language")
+	params.DeviceId = os.Getenv(prefix + "deviceId")
 	params.AndroidCert = os.Getenv(prefix + "androidCert")
 	params.AndroidPackage = os.Getenv(prefix + "androidPackage")
-	params.ApiKey = os.Getenv(prefix + "apiKey")
-	params.ApiURL = os.Getenv(prefix + "apiURL")
-	params.AsaaseAPI = os.Getenv(prefix + "asaaseAPI")
-	params.Country = os.Getenv(prefix + "country")
 	params.CountryName = os.Getenv(prefix + "countryName")
-	params.Language = os.Getenv(prefix + "language")
-	params.LanguageCode = os.Getenv(prefix + "languageCode")
-	params.UUID = os.Getenv(prefix + "uuid")
+	params.Country = os.Getenv(prefix + "country")
 
 	port := os.Getenv("PORT")
 
