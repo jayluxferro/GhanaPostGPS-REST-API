@@ -27,20 +27,22 @@ type AddressResponse struct {
 }
 
 type Address struct {
-	GPSName  string
-	Region   string
-	District string
-	PostCode string
-	NLat     float64
-	Slat     float64
-	WLong    float64
-	Elong    float64
-	Area     string
-	Street   string
+	GPSName   string
+	Region    string
+	District  string
+	PostCode  string
+	NLat      float64
+	Slat      float64
+	WLong     float64
+	Elong     float64
+	Area      string
+	AddressV1 string
+	Street    string
 }
 
 type Info struct {
 	Area            string
+	AddressV1       string
 	CenterLatitude  float64
 	CenterLongitude float64
 	District        string
