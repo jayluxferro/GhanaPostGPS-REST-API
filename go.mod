@@ -6,7 +6,7 @@ go 1.17
 require (
 	github.com/gin-gonic/gin v1.8.1
 	github.com/heroku/x v0.0.52
-	github.com/jayluxferro/ghanapostgps v1.1.6
+	github.com/jayluxferro/ghanapostgps v1.1.7
 	github.com/joho/godotenv v1.4.0
 )
 
