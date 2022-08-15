@@ -6,7 +6,7 @@ function generateAPIKeys(){
   $('#loader').show()
   $.post('/api-keys', data => {
     if(data && data.data){
-      $('#log').val(data.data)
+	document.getElementById('log').value = data.data.replaceAll('\\n', '\n')
     }
     $('#loader').hide()
   })
