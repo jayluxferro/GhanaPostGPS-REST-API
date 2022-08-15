@@ -4,8 +4,8 @@ github.com/gin-gonic/gin v0.0.0-20150626140855-4cc2de6207f4/go.mod h1:7cKuhb5qV2
 github.com/google/uuid v1.3.0/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
 github.com/heroku/x v0.0.0-20171004170240-705849e307dd h1:zn29UrzyUeQgqxBGXIwQqQJf75IiK4aeCtO5q1V2Vyo=
 github.com/heroku/x v0.0.0-20171004170240-705849e307dd/go.mod h1:opmAyjmIGn9/Y+9Nia6eIaktIXIoMhhFXEFbHLMsX3Y=
-github.com/jayluxferro/ghanapostgps v1.1.5 h1:3Ob1Wn8xSgqKSudZNik8XD5PiDCawISqB4NyEHBvR9I=
-github.com/jayluxferro/ghanapostgps v1.1.5/go.mod h1:5/TOjad7SrcwvIABHoNxYNV2pdUBmRhAldlsbGGGPt8=
+github.com/jayluxferro/ghanapostgps v1.1.6 h1:bsukkXCIYLsMgnNtluNBra3A5Yoz/Y1/B+CiR2EubAA=
+github.com/jayluxferro/ghanapostgps v1.1.6/go.mod h1:5/TOjad7SrcwvIABHoNxYNV2pdUBmRhAldlsbGGGPt8=
 github.com/joho/godotenv v1.4.0 h1:3l4+N6zfMWnkbPEXKng2o2/MR5mSwTrBih4ZEkkz1lg=
 github.com/joho/godotenv v1.4.0/go.mod h1:f4LDr5Voq0i2e/R5DDNOoa2zzDfwtkZa6DnEwAbqwq4=
 github.com/manucorporat/sse v0.0.0-20160126180136-ee05b128a739 h1:ykXz+pRRTibcSjG1yRhpdSHInF8yZY/mfn+Rz2Nd1rE=

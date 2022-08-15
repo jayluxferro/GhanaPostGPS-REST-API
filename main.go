@@ -11,6 +11,7 @@ import (
 	_ "github.com/heroku/x/hmetrics/onload"
 	gp "github.com/jayluxferro/ghanapostgps"
 	"github.com/joho/godotenv"
+	"fmt"
 )
 
 var params gp.Params
@@ -94,6 +95,7 @@ func getAddressHandler(c *gin.Context) {
 	}
 
 	response := gp.GetAddress(lat, long, &params)
+	fmt.Println(response)
 	if !strings.Contains(response, getAddressIdentifier) {
 		responseData(c, false, dataResponse)
 		return
@@ -114,6 +116,7 @@ func getLocationHandler(c *gin.Context) {
 	}
 
 	response := gp.GetLocation(address, &params)
+	fmt.Println(response)
 
 	if !strings.Contains(response, identifier) {
 		responseData(c, false, dataResponse)
@@ -166,6 +169,7 @@ func main() {
 	params.CountryName = os.Getenv(prefix + "countryName")
 	params.Country = os.Getenv(prefix + "country")
 
+	fmt.Println(params)
 	port := os.Getenv("PORT")
 
 	if port == "" {
