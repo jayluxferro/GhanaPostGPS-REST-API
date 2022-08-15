@@ -35,7 +35,7 @@ go mod vendor
 **NB:** 
 * Default port is `5001`. Modify the 'run' scripts to change the default port. The API documentation is the same; replace the hostname with your instance's.
 
-* The default API keys are stored in the `.env` file. You can generate new keys <a href="https://ghanapostgps.sperixlabs.org" target="_blank">here</a>.
+* Create a `.env` file with the same contents as `.env.example`. Generate the API keys <a href="https://ghanapostgps.sperixlabs.org" target="_blank">here</a>.
 
 ### Heroku
 1. Clone the project.
