@@ -1,4 +1,4 @@
-module github.com/jayluxferro/ghpgps
+module github.com/jayluxferro/GhanaPostGPS-REST-API
 
 // +heroku goVersion go1.17
 go 1.17
