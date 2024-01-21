@@ -8,6 +8,7 @@
 <hr/>
 
 ### Docker Deployment
+Details: https://hub.docker.com/r/jayluxferro/ghanapostgps-api
 1. Pull the docker image. `docker pull jayluxferro/ghanapostgps-api:latest`
 2. Run the docker image. `docker run -d -p 9091:9091 -ti jayluxferro/ghanapostgps-api`.
 
