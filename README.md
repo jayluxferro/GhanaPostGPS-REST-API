@@ -4,51 +4,16 @@
 
 
 <details>
-<summary>Deploy your own instance</summary>
+<summary>Docker Instance</summary>
 <hr/>
 
-### Local Server / VPS
-1. Download and install Golang (<a href="https://golang.org/dl" target="_blank">here</a>). Make sure it's added to your environment path.
+### Docker Deployment
+1. Pull the docker image. `docker pull jayluxferro/ghanapostgps-api:latest`
+2. Run the docker image. `docker run -d -p 9091:9091 -ti jayluxferro/ghanapostgps-api`.
 
-2. Clone the repository.
-```
-git clone https://github.com/jayluxferro/GhanaPostGPS-REST-API.git ghanapostgps
-```
-
-3. Install dependencies.
-```terminal
-cd ghanapostgps
-go mod download
-go mod vendor
-```
-
-4. Run in development mode
-```
-./dev
-```
-
-5. Run in live mode
-```
-./live
-```
-
-**NB:** 
-* Default port is `5001`. Modify the 'run' scripts to change the default port. The API documentation is the same; replace the hostname with your instance's.
-
-* Create a `.env` file with the same contents as `.env.example`. Generate the API keys <a href="https://ghanapostgps.sperixlabs.org" target="_blank">here</a>.
-
-### Heroku
-1. Clone the project.
-
-2. Create a new heroku project and add its git URL. Example is shown below:
-```
-    git remote add heroku https://myproject.heroku.git
-```
-
-3. Push to the heroku instance.
-```
-    git push heroku master
-```
+**NB:**
+* Default port for the service is `9091`.
+* Base URL: `http://localhost:9091`
 </details>
 <br/>
 
