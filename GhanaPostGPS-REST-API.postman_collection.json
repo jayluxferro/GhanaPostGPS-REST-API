@@ -1,0 +1,80 @@
+{
+	"info": {
+		"_postman_id": "5398d566-31bc-46b7-b672-45945f50db00",
+		"name": "GhanaPostGPS-REST-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1492145"
+	},
+	"item": [
+		{
+			"name": "Get Location Coordinates (Latitude/Longitude) from GhanaPostGPS Address",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "address",
+							"value": "AK-484-9321",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://ghanapostgps.sperixlabs.org/get-location",
+					"protocol": "https",
+					"host": [
+						"ghanapostgps",
+						"sperixlabs",
+						"org"
+					],
+					"path": [
+						"get-location"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get GhanaPostGPS Address from Location Coordinates (Latitude/Longitude)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "lat",
+							"value": "6.6500",
+							"type": "text"
+						},
+						{
+							"key": "long",
+							"value": "-1.647",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://ghanapostgps.sperixlabs.org/get-address",
+					"protocol": "https",
+					"host": [
+						"ghanapostgps",
+						"sperixlabs",
+						"org"
+					],
+					"path": [
+						"get-address"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
