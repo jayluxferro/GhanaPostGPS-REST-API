@@ -1,6 +1,16 @@
 ## GhanaPostGPS REST API
 ### Whitepaper
 <p><a target="_blank" href="http://dx.doi.org/10.13140/RG.2.2.24355.27684/2">Read Now</a></p>
+<br/>
+
+<details>
+<summary>Postman Collection</summary>
+<hr/>
+
+### Postman Collection
+Download: [GhanaPostGPS-REST-API.postman_collection.json](https://github.com/jayluxferro/GhanaPostGPS-REST-API/blob/master/GhanaPostGPS-REST-API.postman_collection.json)
+</details>
+<br/>
 
 
 <details>
