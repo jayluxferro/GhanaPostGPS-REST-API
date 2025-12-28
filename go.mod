@@ -1,7 +1,7 @@
 module github.com/jayluxferro/GhanaPostGPS-REST-API
 
 // +heroku goVersion go1.17
-go 1.17
+go 1.24.0
 
 require (
 	github.com/gin-gonic/gin v1.9.1
