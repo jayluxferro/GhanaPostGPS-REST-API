@@ -193,7 +193,7 @@ func main() {
 
 	port := os.Getenv("PORT")
 	if port == "" {
-		log.Fatal("$PORT must be set")
+		port = "9091"
 	}
 
 	gin.SetMode(gin.ReleaseMode)

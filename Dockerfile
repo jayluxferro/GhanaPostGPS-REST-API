@@ -20,10 +20,13 @@ FROM alpine:latest
 RUN apk add --no-cache ca-certificates tzdata
 
 COPY --from=builder /bin/ghpgps /bin/ghpgps
+COPY .env .env
 COPY templates/ /templates/
 COPY static/ /static/
 
-EXPOSE 5001
+EXPOSE 9091
+
+ENV PORT=9091
 
 USER nobody
 
