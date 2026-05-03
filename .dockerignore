@@ -1,0 +1,16 @@
+.git
+.env
+.env.example
+Dockerfile
+docker-compose.yml
+*.md
+.gitignore
+.gitattributes
+app.json
+heroku.yml
+Procfile
+build
+dev
+live
+*.postman_collection.json
+bin/

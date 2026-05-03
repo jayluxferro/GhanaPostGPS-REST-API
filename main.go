@@ -18,6 +18,15 @@ var params gp.Params
 const identifier = "CenterLatitude"
 const getAddressIdentifier = "PostCode"
 
+type GetLocationRequest struct {
+	Address string `json:"address" form:"address"`
+}
+
+type GetAddressRequest struct {
+	Lat  string `json:"lat" form:"lat"`
+	Long string `json:"long" form:"long"`
+}
+
 type DataResponse struct {
 	Table []Info
 }
@@ -71,57 +80,73 @@ func responseData(c *gin.Context, found bool, data interface{}) {
 	})
 }
 
-func getAPIKeysHandler(c *gin.Context){
-	// copy current params
+func bindInput(c *gin.Context, v interface{}) bool {
+	ct := c.GetHeader("Content-Type")
+	if strings.HasPrefix(ct, "application/json") {
+		if err := c.ShouldBindJSON(v); err != nil {
+			return false
+		}
+	} else {
+		if err := c.ShouldBind(v); err != nil {
+			return false
+		}
+	}
+	return true
+}
+
+func getAPIKeysHandler(c *gin.Context) {
 	defaults := params
-
-	// set new values
-  defaults.ApiURL = gp.BaseAPIURL
-
-	// return data
+	defaults.ApiURL = gp.BaseAPIURL
 	c.JSON(http.StatusOK, gin.H{"data": gp.GetAPIKeys(&defaults)})
 }
 
-
 func getAddressHandler(c *gin.Context) {
 	var dataResponse AddressResponse
-	lat := string(c.PostForm("lat"))
-	long := string(c.PostForm("long"))
+	var req GetAddressRequest
 
-	if !(len(lat) > 0 && len(long) > 0) {
+	if !bindInput(c, &req) {
 		unAuthorized(c)
 		return
 	}
 
-	response := gp.GetAddress(lat, long, &params)
+	if !(len(req.Lat) > 0 && len(req.Long) > 0) {
+		unAuthorized(c)
+		return
+	}
+
+	response := gp.GetAddress(req.Lat, req.Long, &params)
 	if !strings.Contains(response, getAddressIdentifier) {
 		responseData(c, false, dataResponse)
 		return
 	}
 
 	response = convertToJSON(response)
-
 	json.Unmarshal([]byte(response), &dataResponse)
 	responseData(c, true, dataResponse)
 }
 
 func getLocationHandler(c *gin.Context) {
 	var dataResponse DataResponse
-	isValid, address := gp.IsValidGPAddress(c.PostForm("address"))
+	var req GetLocationRequest
+
+	if !bindInput(c, &req) {
+		unAuthorized(c)
+		return
+	}
+
+	isValid, address := gp.IsValidGPAddress(req.Address)
 	if !isValid {
 		unAuthorized(c)
 		return
 	}
 
 	response := gp.GetLocation(address, &params)
-
 	if !strings.Contains(response, identifier) {
 		responseData(c, false, dataResponse)
 		return
 	}
 
 	response = convertToJSON(response)
-
 	json.Unmarshal([]byte(response), &dataResponse)
 	responseData(c, true, dataResponse)
 }
@@ -142,17 +167,17 @@ func convertToJSON(data string) string {
 func CORSMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
+		c.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+		if c.Request.Method == "OPTIONS" {
+			c.AbortWithStatus(http.StatusNoContent)
+			return
+		}
 	}
 }
 
 func main() {
-	//load .env file
-	err := godotenv.Load(".env")
+	_ = godotenv.Load(".env")
 
-	if err != nil {
-			log.Fatal("Error loading .env file")
-	}
-	// inits
 	prefix := "GPGPS_"
 	params = gp.Params{}
 	params.ApiURL = os.Getenv(prefix + "apiURL")
@@ -167,7 +192,6 @@ func main() {
 	params.Country = os.Getenv(prefix + "country")
 
 	port := os.Getenv("PORT")
-
 	if port == "" {
 		log.Fatal("$PORT must be set")
 	}
@@ -178,17 +202,16 @@ func main() {
 	router.Use(gin.Logger())
 	router.LoadHTMLGlob("templates/*.tmpl.html")
 	router.Static("/static", "static")
-	
-	var production = false
-  if(os.Getenv("MODE") == "prod"){
-    production = true
-  }
 
-	// routes
+	var production = false
+	if os.Getenv("MODE") == "prod" {
+		production = true
+	}
+
 	router.GET("/", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.tmpl.html", gin.H{
-      "production": production,
-    })
+			"production": production,
+		})
 	})
 
 	router.POST("/", getLocationHandler)

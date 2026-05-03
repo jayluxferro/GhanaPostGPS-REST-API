@@ -1,2 +1,2 @@
 ./build
-PORT=5001 go run main.go
+PORT=9091 go run main.go

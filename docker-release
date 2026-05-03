@@ -1,0 +1,23 @@
+#!/bin/bash
+set -euo pipefail
+
+IMAGE="jayluxferro/ghanapostgps-api"
+TAG="latest"
+PLATFORMS="linux/amd64,linux/arm64"
+BUILDER="ghpgps-builder"
+
+# Clean up stale builder if it exists
+docker buildx rm "$BUILDER" 2>/dev/null || true
+
+echo "=== Creating multi-platform builder: $BUILDER ==="
+docker buildx create --name "$BUILDER" --driver docker-container --use --bootstrap
+
+echo "=== Building & pushing ${IMAGE}:${TAG} (${PLATFORMS}) ==="
+docker buildx build \
+  --builder "$BUILDER" \
+  --platform "${PLATFORMS}" \
+  -t "${IMAGE}:${TAG}" \
+  --push \
+  .
+
+echo "=== Done: ${IMAGE}:${TAG} (${PLATFORMS}) ==="

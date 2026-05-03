@@ -18,12 +18,33 @@ Download: [GhanaPostGPS-REST-API.postman_collection.json](https://github.com/jay
 <hr/>
 
 ### Docker Deployment
-Details: https://hub.docker.com/r/jayluxferro/ghanapostgps-api
-1. Pull the docker image. `docker pull jayluxferro/ghanapostgps-api:latest`
-2. Run the docker image. `docker run -d -p 9091:9091 -ti jayluxferro/ghanapostgps-api`.
+Images: https://hub.docker.com/r/jayluxferro/ghanapostgps-api
+
+Supports `linux/amd64` and `linux/arm64` (Apple Silicon, AWS Graviton).
+
+#### docker-compose (recommended)
+```bash
+cp .env.example .env       # edit .env with your keys
+docker compose up -d       # runs on http://localhost:9091
+```
+
+#### docker run
+```bash
+docker run -d \
+  --env-file .env \
+  -e PORT=9091 \
+  -p 9091:9091 \
+  jayluxferro/ghanapostgps-api:latest
+```
+
+#### Build & push your own
+```bash
+./docker-release           # builds + pushes :latest
+./docker-release v3        # builds + pushes :v3
+```
 
 **NB:**
-* Default port for the service is `9091`.
+* Default port is `9091`.
 * Base URL: `http://localhost:9091`
 </details>
 <br/>
@@ -36,7 +57,19 @@ Details: https://hub.docker.com/r/jayluxferro/ghanapostgps-api
 <b>End Point URL:</b> https://ghanapostgps.sperixlabs.org/get-location<br>
 <b>Method:</b> POST<br>
 <b>API Parameters:</b> address (GhanaPostGPS Address)<br>
-<b>Content-Type:</b> application/x-www-form-urlencoded<br><br>
+<b>Content-Type:</b> application/json or application/x-www-form-urlencoded<br><br>
+
+#### JSON request
+```json
+{"address": "AK-484-9321"}
+```
+
+#### Form request
+```
+address=AK-484-9321
+```
+
+<br>
 #### Output/Response:<br>
 
 1. Location found
@@ -354,7 +387,19 @@ $response | ConvertTo-Json
 <b>End Point URL:</b> https://ghanapostgps.sperixlabs.org/get-address<br>
 <b>Method:</b> POST<br>
 <b>API Parameters:</b> lat (latitude), long (longitude)<br>
-<b>Content-Type:</b> application/x-www-form-urlencoded<br><br>
+<b>Content-Type:</b> application/json or application/x-www-form-urlencoded<br><br>
+
+#### JSON request
+```json
+{"lat": "6.6500", "long": "-1.6487"}
+```
+
+#### Form request
+```
+lat=6.6500&long=-1.6487
+```
+
+<br>
 #### Output/Response:<br>
 
 1. Address found

@@ -1,0 +1,11 @@
+services:
+  api:
+    build: .
+    container_name: ghpgps-api
+    ports:
+      - "${PORT:-9091}:${PORT:-9091}"
+    env_file:
+      - .env
+    restart: unless-stopped
+    environment:
+      - GIN_MODE=${GIN_MODE:-release}
